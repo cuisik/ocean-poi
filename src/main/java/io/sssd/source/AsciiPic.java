@@ -13,7 +13,7 @@ public class AsciiPic {
      *            图片路径
      */
     public static void createAsciiPic(final String path) {
-        final String base = "魔娜御罩鲜骑真眼美姐莎画如安补杜兵耳血戈田本子之工ライダー";// 字符串由复杂到简单
+        final String base = "魔娜御罩鲜真骑眼莎姐美画如安补杜耳血兵田本戈子之工ライダー";// 字符串由复杂到简单
         try {
             final BufferedImage image = ImageIO.read(new File(path));
 
@@ -25,7 +25,7 @@ public class AsciiPic {
             System.out.println(width + height);
             //压缩计算
             /*这个参数是要转化成的倍数,如果是1就是转化成1倍*/
-            float resizeTimes = 0.293f;
+            float resizeTimes = 0.17f;
 
             /* 调整后的图片的宽度和高度 */
             int toWidth = (int) (width * resizeTimes);
