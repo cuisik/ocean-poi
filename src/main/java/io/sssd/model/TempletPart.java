@@ -26,22 +26,22 @@ public class TempletPart {
     }
 
 
-    private Integer breath;
+    private int allBreath;
 
-    private Integer depth;
+    private int allDepth;
 
     private HashMap fieldMap;
 
     public TempletPart fields(Field[] fields) {
         this.fields = fields;
-        int breath = 0;
-        int depth = 0;
+        int allBreath = 0;
+        int allDepth = 0;
         for (Field field : fields) {
-            breath = field.getBreath() + breath;
-            depth = depth > field.getDepth() ? depth : field.getDepth();
+            allBreath = field.getBreath() + allBreath;
+            allDepth = allDepth > field.getDepth() ? allDepth : field.getDepth();
         }
-        this.breath = breath;
-        this.depth = depth;
+        this.allBreath = allBreath;
+        this.allDepth = allDepth;
         this.fieldMap = reFieldMap(fields);
         return this;
     }
@@ -170,12 +170,11 @@ public class TempletPart {
     private HashMap<String, Integer[]> reMergeMap(Field[] fields, HashMap<String, Integer[]> hashMap, int initRow, int initRank) {
         for (Field field : fields) {
             if (field.isLeaf()) {
-                int mergeRow = this.depth;
                 int mergeRank = field.getBreath();
-                Integer[] is = new Integer[]{initRow, initRank, mergeRow, mergeRank};
+                Integer[] is = new Integer[]{initRow, initRank, field.getOccupyRow() + initRow, field.getOccupyRank()};
                 hashMap.put(field.getFieldName(), is);
-                initRank = mergeRank;
-            }else {
+                initRank = initRank + field.getOccupyRank();
+            } else {
 
 
             }
