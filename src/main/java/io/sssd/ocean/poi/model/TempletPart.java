@@ -1,4 +1,4 @@
-package io.sssd.model;
+package io.sssd.ocean.poi.model;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -8,6 +8,7 @@ import java.util.LinkedHashMap;
  * Created by MIAOM on 2018/4/22.
  */
 public class TempletPart {
+
 
 
     private String header;
@@ -21,6 +22,7 @@ public class TempletPart {
     private boolean showTitle = true;
 
     public TempletPart header(String header) {
+
         this.header = header;
         return this;
     }
@@ -75,17 +77,7 @@ public class TempletPart {
         this.entityClass = entityClass;
     }
 
-    private Integer realRowNum;
 
-    private Integer headerRowNum;
-
-    private Integer opTitleRowNum;
-
-    private Integer edTitleRowNum;
-
-    private Integer opDataRowNum;
-
-    private Integer edDataRowNum;
 
     private int dataCount;
 
@@ -122,29 +114,7 @@ public class TempletPart {
         return entityClass;
     }
 
-    public Integer getRealRowNum() {
-        return realRowNum;
-    }
 
-    public Integer getHeaderRowNum() {
-        return headerRowNum;
-    }
-
-    public Integer getOpTitleRowNum() {
-        return opTitleRowNum;
-    }
-
-    public Integer getEdTitleRowNum() {
-        return edTitleRowNum;
-    }
-
-    public Integer getOpDataRowNum() {
-        return opDataRowNum;
-    }
-
-    public Integer getEdDataRowNum() {
-        return edDataRowNum;
-    }
 
     public int getDataCount() {
         return dataCount;

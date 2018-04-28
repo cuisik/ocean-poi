@@ -1,4 +1,4 @@
-package io.sssd.model;
+package io.sssd.ocean.poi.model;
 
 import java.util.Arrays;
 

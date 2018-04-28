@@ -1,4 +1,7 @@
-import io.sssd.model.Field;
+import io.sssd.ocean.poi.core.Context;
+import io.sssd.ocean.poi.core.SheetBox;
+import io.sssd.ocean.poi.core.i.CycleRowFIll;
+import io.sssd.ocean.poi.model.Field;
 import org.junit.Test;
 
 /**
@@ -10,7 +13,7 @@ public class FieldTest {
     @Test
     public void test1() {
 
-        Field aaa = new Field("aaa","aaa");
+        Field aaa = new Field("aaa", "aaa");
         Field bbb = new Field("bbb");
         Field ccc = new Field("ccc");
         Field ddd = new Field("ddd");
@@ -20,13 +23,26 @@ public class FieldTest {
         Field fff = new Field("fff");
         Field ggg = new Field("ggg");
 
-        Field hhh = new Field("hhh",new Field[]{ggg,fff,eee});
+        Field hhh = new Field("hhh", new Field[]{ggg, fff, eee});
 
-        Field jjj = new Field("jjj",new Field[]{hhh});
+        Field jjj = new Field("jjj", new Field[]{hhh});
 
-        Field kkk = new Field("kkk",new Field[]{jjj});
-        System.out.println(hhh.getBreath() + "    " + hhh.getDepth());
-        System.out.println(kkk.getBreath() + "    " + kkk.getDepth());
+        Field kkk = new Field("kkk", new Field[]{jjj});
+        System.out.println(hhh.toString());
+        System.out.println(kkk.toString());
 
+    }
+
+    @Test
+    public void test2() {
+
+        String sss = "aaa";
+
+        new CycleRowFIll() {
+            @Override
+            public void addRows(SheetBox sheetBox, Context context) {
+
+            }
+        };
     }
 }

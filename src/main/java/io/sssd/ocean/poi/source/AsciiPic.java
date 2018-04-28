@@ -1,4 +1,4 @@
-package io.sssd.source;
+package io.sssd.ocean.poi.source;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
