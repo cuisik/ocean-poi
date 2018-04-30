@@ -1,6 +1,6 @@
 package io.sssd.ocean.poi.core;
 
-import io.sssd.ocean.poi.core.i.WorkbookAdapter;
+import io.sssd.ocean.poi.core.open.i.WorkbookAdapter;
 import io.sssd.ocean.poi.model.Templet;
 import io.sssd.ocean.poi.model.TempletPart;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -113,7 +113,7 @@ class DefaultWorkbookAdapter implements WorkbookAdapter {
 
         TempletPart[] parts = templet.getTempletParts();
 
-        SheetBox sheetBox = new SheetBox(sheet, 0);
+        SheetBox sheetBox = new SheetBox(sheet,0);
         for (TempletPart part : parts) {
 
 

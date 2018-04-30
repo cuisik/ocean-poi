@@ -28,4 +28,12 @@ public class SheetBox {
         return rowNum;
     }
 
+    public int skipNum(int num) {
+        rowNum = rowNum + num;
+        return rowNum;
+    }
+    // 合并 适用范围：当前行
+//    public void
+
+
 }

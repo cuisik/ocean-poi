@@ -1,8 +1,8 @@
 package io.sssd.ocean.poi.core;
 
 
-import io.sssd.ocean.poi.core.i.CycleRowFIll;
-import io.sssd.ocean.poi.core.i.WorkbookAdapter;
+import io.sssd.ocean.poi.core.open.i.CycleRowFIll;
+import io.sssd.ocean.poi.core.open.i.WorkbookAdapter;
 import io.sssd.ocean.poi.model.Templet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
@@ -27,17 +27,17 @@ public class OceanPoiExcel {
         return excelHandler;
     }
 
-    public static void dataToExcel() {
+    public static void data2Excel() {
 
 
     }
 
-    public static List excelToData(Class Clazz) {
+    public static List excel2Data(Class Clazz) {
 
         return null;
     }
 
-    public static Templet[] excelToData() {
+    public static Templet[] excel2Data() {
 
         return null;
     }
@@ -53,24 +53,29 @@ class ExcelHandler {
         this.workbookAdapter = workbookAdapter;
     }
 
-    public void dataT0Excel2003(List list, OutputStream outputStream) {
+    public void data2Excel2003(List list, OutputStream outputStream) {
         HSSFWorkbook hssfWorkbook = workbookAdapter.creaetWorkbook2003();
         hssfWorkbook.sheetIterator();
 
     }
 
 
-    public void dataT0Excel2007(List list, OutputStream outputStream) {
+    public void data2Excel2007(List list, OutputStream outputStream) {
         XSSFWorkbook xssfWorkbook = workbookAdapter.creaetWorkbook2007();
         xssfWorkbook.sheetIterator();
         Sheet sheet = xssfWorkbook.sheetIterator().next();
         final List list1 = new ArrayList();
         new CycleRowFIll() {
             @Override
-            public void addRows(SheetBox sheetBox, int cellCount) {
+            public void addRows(SheetBox sheetBox, Context context) {
                 Row row = sheetBox.nextRow();
                 System.out.println(list1.size());
             }
+
         };
     }
+
+
+
+
 }
