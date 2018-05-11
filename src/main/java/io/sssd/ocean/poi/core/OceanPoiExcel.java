@@ -1,9 +1,7 @@
 package io.sssd.ocean.poi.core;
 
 
-import io.sssd.ocean.poi.core.open.i.CycleRowFIll;
-import io.sssd.ocean.poi.core.open.i.WorkbookAdapter;
-import io.sssd.ocean.poi.model.Templet;
+import io.sssd.ocean.poi.open.model.Templet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -22,7 +20,7 @@ public class OceanPoiExcel {
 
     private static ExcelHandler getHandler() {
         if (excelHandler == null) {
-            excelHandler = new ExcelHandler(new DefaultWorkbookAdapter());
+//            excelHandler = new ExcelHandler(new DefaultWorkbookAdapter());
         }
         return excelHandler;
     }
@@ -47,33 +45,33 @@ public class OceanPoiExcel {
 
 
 class ExcelHandler {
-    private WorkbookAdapter workbookAdapter;
+//    private WorkbookAdapter workbookAdapter;
 
-    public ExcelHandler(WorkbookAdapter workbookAdapter) {
-        this.workbookAdapter = workbookAdapter;
-    }
-
-    public void data2Excel2003(List list, OutputStream outputStream) {
-        HSSFWorkbook hssfWorkbook = workbookAdapter.creaetWorkbook2003();
-        hssfWorkbook.sheetIterator();
-
-    }
-
-
-    public void data2Excel2007(List list, OutputStream outputStream) {
-        XSSFWorkbook xssfWorkbook = workbookAdapter.creaetWorkbook2007();
-        xssfWorkbook.sheetIterator();
-        Sheet sheet = xssfWorkbook.sheetIterator().next();
-        final List list1 = new ArrayList();
-        new CycleRowFIll() {
-            @Override
-            public void addRows(SheetBox sheetBox, Context context) {
-                Row row = sheetBox.nextRow();
-                System.out.println(list1.size());
-            }
-
-        };
-    }
+//    public ExcelHandler(WorkbookAdapter workbookAdapter) {
+//        this.workbookAdapter = workbookAdapter;
+//    }
+//
+//    public void data2Excel2003(List list, OutputStream outputStream) {
+//        HSSFWorkbook hssfWorkbook = workbookAdapter.creaetWorkbook2003();
+//        hssfWorkbook.sheetIterator();
+//
+//    }
+//
+//
+//    public void data2Excel2007(List list, OutputStream outputStream) {
+//        XSSFWorkbook xssfWorkbook = workbookAdapter.creaetWorkbook2007();
+//        xssfWorkbook.sheetIterator();
+//        Sheet sheet = xssfWorkbook.sheetIterator().next();
+//        final List list1 = new ArrayList();
+//        new CycleRowFIll() {
+//            @Override
+//            public void addRows(SheetBox sheetBox, Context context) {
+//                Row row = sheetBox.nextRow();
+//                System.out.println(list1.size());
+//            }
+//
+//        };
+//    }
 
 
 

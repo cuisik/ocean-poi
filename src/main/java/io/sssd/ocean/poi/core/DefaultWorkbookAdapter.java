@@ -1,8 +1,7 @@
 package io.sssd.ocean.poi.core;
 
-import io.sssd.ocean.poi.core.open.i.WorkbookAdapter;
-import io.sssd.ocean.poi.model.Templet;
-import io.sssd.ocean.poi.model.TempletPart;
+import io.sssd.ocean.poi.open.model.Templet;
+import io.sssd.ocean.poi.open.model.TempletPart;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.openxml4j.opc.OPCPackage;
@@ -21,64 +20,58 @@ import java.security.GeneralSecurityException;
 /**
  * Created by MIAOM on 2018/4/28.
  */
-class DefaultWorkbookAdapter implements WorkbookAdapter {
+class DefaultWorkbookAdapter  {
 
 
     /**
      * 文件创建，读取，加密解密 start
      */
-    @Override
     public HSSFWorkbook creaetWorkbook2003() {
         HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
         return hssfWorkbook;
     }
 
-    @Override
     public XSSFWorkbook creaetWorkbook2007() {
         XSSFWorkbook xssfWorkbook = new XSSFWorkbook();
         return xssfWorkbook;
     }
 
 
-    @Override
     public OutputStream encryptWorkbookStream(OutputStream outputStream, Workbook workbook, String confirm) throws IOException, InvalidFormatException, GeneralSecurityException {
-        OutputStream opsTmp = new ByteArrayOutputStream();
-        workbook.write(opsTmp);
-
-
-        EncryptionInfo info = new EncryptionInfo(EncryptionMode.agile);
-        Encryptor enc = info.getEncryptor();
-        enc.confirmPassword(confirm);
-
-        InputStream ipsTmp = parseStream(opsTmp);
-        opsTmp.close();
-
-        OPCPackage opc = OPCPackage.open(ipsTmp);
-
-        POIFSFileSystem poifsFileSystem = new POIFSFileSystem();
-        OutputStream encOpsTmp = enc.getDataStream(poifsFileSystem);
-        opc.save(encOpsTmp);
-        opc.close();
-
-
-        poifsFileSystem.writeFilesystem(outputStream);
-        poifsFileSystem.close();
-
-
+//        OutputStream opsTmp = new ByteArrayOutputStream();
+//        workbook.write(opsTmp);
+//
+//
+//        EncryptionInfo info = new EncryptionInfo(EncryptionMode.agile);
+//        Encryptor enc = info.getEncryptor();
+//        enc.confirmPassword(confirm);
+//
+//        InputStream ipsTmp = parseStream(opsTmp);
+//        opsTmp.close();
+//
+//        OPCPackage opc = OPCPackage.open(ipsTmp);
+//
+//        POIFSFileSystem poifsFileSystem = new POIFSFileSystem();
+//        OutputStream encOpsTmp = enc.getDataStream(poifsFileSystem);
+//        opc.save(encOpsTmp);
+//        opc.close();
+//
+//
+//        poifsFileSystem.writeFilesystem(outputStream);
+//        poifsFileSystem.close();
+//
+//
         return outputStream;
     }
 
-    @Override
     public HSSFWorkbook fetchWorkbook2003(InputStream inputStream) throws IOException {
         return new HSSFWorkbook(inputStream);
     }
 
-    @Override
     public XSSFWorkbook fetchWorkbook2007(InputStream inputStream) throws IOException {
         return new XSSFWorkbook(inputStream);
     }
 
-    @Override
     public InputStream decryptWorkbookStream(InputStream inputStream, String confirm) throws IOException, GeneralSecurityException {
         POIFSFileSystem poifsFileSystem = new POIFSFileSystem(inputStream);
         inputStream.close();
@@ -108,7 +101,6 @@ class DefaultWorkbookAdapter implements WorkbookAdapter {
     }
 
 
-    @Override
     public void fillSheet(Sheet sheet, Templet templet) {
 
         TempletPart[] parts = templet.getTempletParts();

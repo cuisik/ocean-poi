@@ -18,22 +18,40 @@ public class SheetBox {
     }
 
     public Row nextRow() {
-        Row row = sheet.createRow(rowNum);
+        Row row = sheet.getRow(rowNum);
+        if (row == null) {
+            row = sheet.createRow(rowNum);
+        }
         rowNum++;
         return row;
     }
 
-    public int skipRow() {
-        rowNum++;
-        return rowNum;
+
+    public Row skipRow() {
+        return skipRow(1);
     }
 
-    public int skipNum(int num) {
+    public Row skipRow(int num) {
         rowNum = rowNum + num;
-        return rowNum;
+        Row row = sheet.getRow(rowNum);
+        if (row == null) {
+            row = sheet.createRow(rowNum);
+        }
+        rowNum++;
+        return row;
     }
-    // 合并 适用范围：当前行
-//    public void
 
+    public int skipNum() {
+        return skipNum(1);
+    }
+
+    // 返回跳过后的行号
+    public int skipNum(int num) {
+        int rn;
+        rowNum = rowNum + num;
+        rn = rowNum;
+        rowNum++;
+        return rn;
+    }
 
 }

@@ -1,14 +1,17 @@
-package io.sssd.ocean.poi.model;
+package io.sssd.ocean.poi.open.model;
+
+import io.sssd.ocean.poi.open.i.CycleFiller;
+import io.sssd.ocean.poi.open.use.CommonFillers;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Created by MIAOM on 2018/4/22.
  */
 public class TempletPart {
-
 
 
     private String header;
@@ -18,6 +21,26 @@ public class TempletPart {
     private Collection data;
 
     private String footer;
+
+    private Map map;
+
+    public TempletPart() {
+    }
+
+    public Object getValue(String key) {
+        return map.get(key);
+    }
+
+    public void setValue(String key, Object value) {
+        if (map == null) {
+            map = new HashMap();
+        }
+        map.put(key, value);
+    }
+
+    private CycleFiller headerFiller = CommonFillers._HEADER;
+    private CycleFiller contentFiller = CommonFillers._CONTENT;
+    private CycleFiller footerFiller = CommonFillers._FOOTER;
 
     private boolean showTitle = true;
 
@@ -69,14 +92,11 @@ public class TempletPart {
 
     private Class entityClass;
 
-    private TempletPart() {
-    }
 
     public TempletPart(String key, Class entityClass) {
         this.key = key;
         this.entityClass = entityClass;
     }
-
 
 
     private int dataCount;
@@ -115,7 +135,6 @@ public class TempletPart {
     }
 
 
-
     public int getDataCount() {
         return dataCount;
     }
@@ -150,5 +169,29 @@ public class TempletPart {
             }
         }
         return hashMap;
+    }
+
+    public CycleFiller getHeaderFiller() {
+        return headerFiller;
+    }
+
+    public void setHeaderFiller(CycleFiller headerFiller) {
+        this.headerFiller = headerFiller;
+    }
+
+    public CycleFiller getFooterFiller() {
+        return footerFiller;
+    }
+
+    public void setFooterFiller(CycleFiller footerFiller) {
+        this.footerFiller = footerFiller;
+    }
+
+    public CycleFiller getContentFiller() {
+        return contentFiller;
+    }
+
+    public void setContentFiller(CycleFiller contentFiller) {
+        this.contentFiller = contentFiller;
     }
 }

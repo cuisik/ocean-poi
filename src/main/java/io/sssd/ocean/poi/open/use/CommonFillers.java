@@ -1,70 +1,53 @@
-package io.sssd.ocean.poi.core.open.i;
+package io.sssd.ocean.poi.open.use;
 
 import io.sssd.ocean.poi.core.Context;
 import io.sssd.ocean.poi.core.SheetBox;
-import io.sssd.ocean.poi.model.TempletPart;
+import io.sssd.ocean.poi.core.StringTool;
+import io.sssd.ocean.poi.open.i.CycleFiller;
+import io.sssd.ocean.poi.open.model.TempletPart;
 import org.apache.poi.ss.usermodel.Row;
 
 /**
  * Created by MIAOM on 2018/4/30.
  */
-public enum CommonRowFill implements CycleRowFIll {
+public enum CommonFillers implements CycleFiller {
 
-    TITLE() {
+    _TITLE() {
         @Override
         public void addRows(SheetBox sheetBox, Context context) {
             TempletPart templetPart = context.getTempletPart();
         }
     },
 
-    CONTENT() {
+    _CONTENT() {
         @Override
         public void addRows(SheetBox sheetBox, Context context) {
             TempletPart templetPart = context.getTempletPart();
         }
     },
 
-    TMPL_HEADER() {
+    _HEADER() {
         @Override
         public void addRows(SheetBox sheetBox, Context context) {
-            String header = context.getTempletPart().getHeader();
-            if (header != null) {
+            String header = context.getHeader();
+            if (StringTool.isNotEmpty(header)) {
                 Row row = sheetBox.nextRow();
                 row.getCell(0).setCellValue(header);
-
+            }
+        }
+    },
+    _FOOTER() {
+        @Override
+        public void addRows(SheetBox sheetBox, Context context) {
+            String footer = context.getFooter();
+            if (StringTool.isNotEmpty(footer)) {
+                Row row = sheetBox.nextRow();
+                row.getCell(0).setCellValue(footer);
             }
         }
     },
 
-    TMPL_SPACE() {
-        @Override
-        public void addRows(SheetBox sheetBox, Context context) {
-            super.addRows(sheetBox, context);
-        }
-    },
-
-    TMPL_FOOTER() {
-        @Override
-        public void addRows(SheetBox sheetBox, Context context) {
-            super.addRows(sheetBox, context);
-        }
-    },
-
-    TMPL_PT_HEADER() {
-        @Override
-        public void addRows(SheetBox sheetBox, Context context) {
-            super.addRows(sheetBox, context);
-        }
-    },
-
-    TMPL_PT_SPACE() {
-        @Override
-        public void addRows(SheetBox sheetBox, Context context) {
-            super.addRows(sheetBox, context);
-        }
-    },
-
-    TMPL_PT_FOOTER() {
+    _SPACE() {
         @Override
         public void addRows(SheetBox sheetBox, Context context) {
             super.addRows(sheetBox, context);
@@ -72,7 +55,6 @@ public enum CommonRowFill implements CycleRowFIll {
     };
 
 
-    @Override
     public void addRows(SheetBox sheetBox, Context context) {
         sheetBox.skipRow();
     }

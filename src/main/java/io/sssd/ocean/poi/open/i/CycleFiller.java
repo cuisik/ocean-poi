@@ -1,4 +1,4 @@
-package io.sssd.ocean.poi.core.open.i;
+package io.sssd.ocean.poi.open.i;
 
 import io.sssd.ocean.poi.core.Context;
 import io.sssd.ocean.poi.core.SheetBox;
@@ -9,6 +9,6 @@ import io.sssd.ocean.poi.core.SheetBox;
  * <p>
  * 在模板首部 尾部 模板part中间
  */
-public interface CycleRowFIll {
+public interface CycleFiller {
     void addRows(SheetBox sheetBox, Context context);
 }
