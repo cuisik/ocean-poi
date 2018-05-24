@@ -1,14 +1,11 @@
 package io.sssd.ocean.poi.core;
 
 import io.sssd.ocean.poi.open.model.Templet;
-import io.sssd.ocean.poi.open.model.TempletPart;
+import io.sssd.ocean.poi.open.model.TempletItem;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.poifs.crypt.Decryptor;
 import org.apache.poi.poifs.crypt.EncryptionInfo;
-import org.apache.poi.poifs.crypt.EncryptionMode;
-import org.apache.poi.poifs.crypt.Encryptor;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -20,7 +17,7 @@ import java.security.GeneralSecurityException;
 /**
  * Created by MIAOM on 2018/4/28.
  */
-class DefaultWorkbookAdapter  {
+class DefaultWorkbookAdapter {
 
 
     /**
@@ -103,11 +100,10 @@ class DefaultWorkbookAdapter  {
 
     public void fillSheet(Sheet sheet, Templet templet) {
 
-        TempletPart[] parts = templet.getTempletParts();
+        TempletItem[] parts = templet.getTempletItems();
 
-        SheetBox sheetBox = new SheetBox(sheet,0);
-        for (TempletPart part : parts) {
-
+        SheetBox sheetBox = new SheetBox(sheet, 0);
+        for (TempletItem part : parts) {
 
 
         }

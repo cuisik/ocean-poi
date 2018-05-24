@@ -1,5 +1,6 @@
 package io.sssd.ocean.poi.open.i;
 
+import io.sssd.ocean.poi.core.FieldMap;
 import io.sssd.ocean.poi.open.model.Templet;
 import io.sssd.ocean.poi.open.model.TempletItem;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -9,7 +10,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.security.GeneralSecurityException;
 import java.util.List;
-import java.util.Map;
 
 public interface ExcelHandler {
 
@@ -41,14 +41,15 @@ public interface ExcelHandler {
      * 简单导出
      *
      * @param inputStream
-     * @param fieldRow
-     * @param startDataRow
+     * @param sheetNum
+     * @param fieldNum
+     * @param startDataNum
      * @param fieldMap
      * @param entityClass
      * @param <T>
      * @return
      * @throws IOException
      */
-    <T> List<T> simpleDataToList(InputStream inputStream, int fieldRow, int startDataRow, Map<String, String> fieldMap, Class<T> entityClass) throws IOException;
+    <T> List<T> simpleDataToList(InputStream inputStream, int sheetNum, int fieldNum, int startDataNum, FieldMap fieldMap, Class<T> entityClass) throws IOException, IllegalAccessException, InstantiationException;
 
 }
