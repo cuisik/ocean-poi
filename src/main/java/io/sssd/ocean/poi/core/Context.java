@@ -2,7 +2,7 @@ package io.sssd.ocean.poi.core;
 
 
 import io.sssd.ocean.poi.open.model.Templet;
-import io.sssd.ocean.poi.open.model.TempletPart;
+import io.sssd.ocean.poi.open.model.TempletItem;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,12 +28,12 @@ public class Context {
         return this;
     }
 
-    public TempletPart getTempletPart() {
-        return (TempletPart) map.get(Type._TEMPLET_PART.name());
+    public TempletItem getTempletItem() {
+        return (TempletItem) map.get(Type._TEMPLET_PART.name());
     }
 
-    public Context setTempletPart(TempletPart templetPart) {
-        map.put(Type._TEMPLET_PART.name(), templetPart);
+    public Context setTempletItem(TempletItem TempletItem) {
+        map.put(Type._TEMPLET_PART.name(), TempletItem);
         return this;
     }
 

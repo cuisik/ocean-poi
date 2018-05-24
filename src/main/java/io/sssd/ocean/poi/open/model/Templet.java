@@ -11,7 +11,7 @@ public class Templet {
 
     private String sheetName;
 
-    private TempletPart[] templetParts;
+    private TempletItem[] TempletItems;
 
     public String getSheetName() {
         return sheetName;
@@ -21,12 +21,12 @@ public class Templet {
         this.sheetName = sheetName;
     }
 
-    public TempletPart[] getTempletParts() {
-        return templetParts;
+    public TempletItem[] getTempletItems() {
+        return TempletItems;
     }
 
-    public void setTempletParts(TempletPart... templetParts) {
-        this.templetParts = templetParts;
+    public void setTempletItems(TempletItem... TempletItems) {
+        this.TempletItems = TempletItems;
     }
 
 

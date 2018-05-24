@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Created by MIAOM on 2018/4/22.
  */
-public class TempletPart {
+public class TempletItem {
 
 
     private String header;
@@ -24,8 +24,7 @@ public class TempletPart {
 
     private Map map;
 
-    public TempletPart() {
-    }
+    private int allBreath;
 
     public Object getValue(String key) {
         return map.get(key);
@@ -43,21 +42,27 @@ public class TempletPart {
     private CycleFiller footerFiller = CommonFillers._FOOTER;
 
     private boolean showTitle = true;
+    private int allDepth;
+    private HashMap fieldMap;
+    // key
+    private String key;
+    private Class entityClass;
 
-    public TempletPart header(String header) {
+    public TempletItem() {
+    }
+
+    public TempletItem(String key, Class entityClass) {
+        this.key = key;
+        this.entityClass = entityClass;
+    }
+
+    public TempletItem header(String header) {
 
         this.header = header;
         return this;
     }
 
-
-    private int allBreath;
-
-    private int allDepth;
-
-    private HashMap fieldMap;
-
-    public TempletPart fields(Field[] fields) {
+    public TempletItem fields(Field[] fields) {
         this.fields = fields;
         int allBreath = 0;
         int allDepth = 0;
@@ -71,31 +76,20 @@ public class TempletPart {
         return this;
     }
 
-    public TempletPart data(Collection data) {
+    public TempletItem data(Collection data) {
         this.data = data;
         this.dataCount = data.size();
         return this;
     }
 
-    public TempletPart footer(String footer) {
+    public TempletItem footer(String footer) {
         this.footer = footer;
         return this;
     }
 
-    public TempletPart hideTitle() {
+    public TempletItem hideTitle() {
         this.showTitle = false;
         return this;
-    }
-
-    // key
-    private String key;
-
-    private Class entityClass;
-
-
-    public TempletPart(String key, Class entityClass) {
-        this.key = key;
-        this.entityClass = entityClass;
     }
 
 
