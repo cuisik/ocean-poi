@@ -1,5 +1,6 @@
 package io.sssd.ocean.poi.core;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,20 +11,32 @@ public class FieldMap {
     // 存放有角标的字段
     private List<FieldCellMap> list;
     // 存放无角标的的字段
-    private Map<String, String> map;
+    private Map<String, FieldCellMap> map;
 
     public FieldMap() {
-        list = new ArrayList<>();
-        map = new HashMap();
+        list = new ArrayList<FieldCellMap>();
+        map = new HashMap<String, FieldCellMap>();
     }
 
-    public FieldMap put(int index, String columnName, String fieldName) {
-        list.add(new FieldCellMap(index, columnName, fieldName));
+
+    public FieldMap put(int index, String fieldName) {
+        list.add(new FieldCellMap(index, fieldName));
         return this;
     }
 
+    public FieldMap put(int index, String fieldName, DateFormat dateFormat) {
+        list.add(new FieldCellMap(index, fieldName, dateFormat));
+        return this;
+    }
+
+
     public FieldMap put(String columnName, String fieldName) {
-        map.put(columnName, fieldName);
+        map.put(columnName, new FieldCellMap(columnName, fieldName));
+        return this;
+    }
+
+    public FieldMap put(String columnName, String fieldName, DateFormat dateFormat) {
+        map.put(columnName, new FieldCellMap(columnName, fieldName, dateFormat));
         return this;
     }
 
@@ -31,7 +44,7 @@ public class FieldMap {
         return list;
     }
 
-    protected Map<String, String> getMap() {
+    protected Map<String, FieldCellMap> getMap() {
         return map;
     }
 

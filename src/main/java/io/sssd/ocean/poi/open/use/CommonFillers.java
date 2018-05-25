@@ -4,7 +4,7 @@ import io.sssd.ocean.poi.core.Context;
 import io.sssd.ocean.poi.core.SheetBox;
 import io.sssd.ocean.poi.core.StringTool;
 import io.sssd.ocean.poi.open.i.CycleFiller;
-import io.sssd.ocean.poi.open.model.TempletPart;
+import io.sssd.ocean.poi.open.model.TempletItem;
 import org.apache.poi.ss.usermodel.Row;
 
 /**
@@ -15,14 +15,14 @@ public enum CommonFillers implements CycleFiller {
     _TITLE() {
         @Override
         public void addRows(SheetBox sheetBox, Context context) {
-            TempletPart templetPart = context.getTempletPart();
+            TempletItem TempletItem = context.getTempletItem();
         }
     },
 
     _CONTENT() {
         @Override
         public void addRows(SheetBox sheetBox, Context context) {
-            TempletPart templetPart = context.getTempletPart();
+            TempletItem TempletItem = context.getTempletItem();
         }
     },
 

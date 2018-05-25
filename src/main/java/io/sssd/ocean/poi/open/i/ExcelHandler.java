@@ -8,7 +8,9 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.security.GeneralSecurityException;
+import java.text.ParseException;
 import java.util.List;
 
 public interface ExcelHandler {
@@ -50,6 +52,6 @@ public interface ExcelHandler {
      * @return
      * @throws IOException
      */
-    <T> List<T> simpleDataToList(InputStream inputStream, int sheetNum, int fieldNum, int startDataNum, FieldMap fieldMap, Class<T> entityClass) throws IOException, IllegalAccessException, InstantiationException;
+    <T> List<T> simpleDataToList(InputStream inputStream, int sheetNum, int fieldNum, int startDataNum, FieldMap fieldMap, Class<T> entityClass) throws IOException, IllegalAccessException, InstantiationException, InvocationTargetException, ParseException;
 
 }
