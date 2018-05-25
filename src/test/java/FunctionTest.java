@@ -62,6 +62,9 @@ public class FunctionTest {
         fieldMap.put(3, "c");
         List<TestObj> list = hssfHandler.simpleDataToList(fileInputStream, 0, 2, 3, fieldMap, TestObj.class);
 
+        for (TestObj testObj : list) {
+            System.out.println(testObj);
+        }
 
     }
 

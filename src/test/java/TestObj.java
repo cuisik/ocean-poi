@@ -4,35 +4,36 @@ import java.util.Date;
 
 public class TestObj implements EntityCheck {
 
-    private int a;
+    private Integer a;
 
-    private String b;
+    private Integer b;
 
-    private String c;
+    private Integer c;
 
     private Date d;
 
-    public int getA() {
+
+    public Integer getA() {
         return a;
     }
 
-    public void setA(int a) {
+    public void setA(Integer a) {
         this.a = a;
     }
 
-    public String getB() {
+    public Integer getB() {
         return b;
     }
 
-    public void setB(String b) {
+    public void setB(Integer b) {
         this.b = b;
     }
 
-    public String getC() {
+    public Integer getC() {
         return c;
     }
 
-    public void setC(String c) {
+    public void setC(Integer c) {
         this.c = c;
     }
 
@@ -52,11 +53,21 @@ public class TestObj implements EntityCheck {
 
     public boolean eliminate() {
         // 判断
-        if (b == "") {
+        if (b == null) {
             System.out.println(" 如果b为kong 则丢失这个对象"
             );
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "TestObj{" +
+                "a=" + a +
+                ", b='" + b + '\'' +
+                ", c='" + c + '\'' +
+                ", d=" + d +
+                '}';
     }
 }

@@ -127,12 +127,17 @@ public class HSSFHandler implements ExcelHandler {
                 } else {
                     String fieldName = fieldCellMap.getFieldName();
                     String cellContent = cell.toString();
-                    beanMap.put(fieldName, cellContent);
+                    if (cellContent != "") {
+                        if (cellContent.endsWith(".0")) {
+                            cellContent = cellContent.replace(".0", "");
+                        } else if (cellContent.endsWith(".00")) {
+                            cellContent = cellContent.replace(".00", "");
+                        }
+                        beanMap.put(fieldName, cellContent);
+                    }
                 }
-
             }
             BeanUtils.populate(entity, beanMap);
-
             if (openCheck) {
                 // 强制转型
                 EntityCheck check = (EntityCheck) entity;
